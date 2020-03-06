@@ -31,16 +31,16 @@ public class Executor implements Watcher,Runnable, DataMonitor.DataMonitorListen
     }
 
     public static void main(String[] args) {
-        if (args.length < 4) {
-            System.err
-                    .println("USAGE: Executor hostPort znode filename program [args ...]");
-            System.exit(2);
-        }
-        String hostPort = args[0];
-        String znode = args[1];
-        String filename = args[2];
-        String exec[] = new String[args.length - 3];
-        System.arraycopy(args, 3, exec, 0, exec.length);
+//        if (args.length < 4) {
+////            System.err
+////                    .println("USAGE: Executor hostPort znode filename program [args ...]");
+////            System.exit(2);
+////        }
+        String hostPort = "192.168.117.128:2181";//args[0];
+        String znode = "/zoo-test";//args[1];
+        String filename = "E://zoo-test.log";//args[2];
+        String exec[] = {"cmd"};//new String[args.length - 3];
+       // System.arraycopy(args, 3, exec, 0, exec.length);
         try {
             new Executor(hostPort, znode, filename, exec).run();
         } catch (Exception e) {

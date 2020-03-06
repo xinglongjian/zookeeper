@@ -53,6 +53,7 @@ public class DataMonitor implements Watcher, AsyncCallback.StatCallback {
 
     @Override
     public void processResult(int rc, String path, Object ctx, Stat stat) {
+        System.out.println("processResult:rc"+rc+",path="+path);
         boolean exists;
         switch (rc) {
             case KeeperException.Code.Ok:
@@ -94,6 +95,7 @@ public class DataMonitor implements Watcher, AsyncCallback.StatCallback {
     @Override
     public void process(WatchedEvent event) {
         String path = event.getPath();
+        System.out.println("process:"+path);
         if (event.getType() == Event.EventType.None) {
             // We are are being told that the state of the
             // connection has changed
